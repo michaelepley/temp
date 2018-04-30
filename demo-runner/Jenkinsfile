@@ -20,5 +20,19 @@ pipeline {
 				}
 			}
 		}
+		stage('extract template') {
+			steps {
+				script {
+					echo "Hello world"
+					openshift.withCluster() {
+						openshift.withProject() {
+							sh "./promote-application.sh"
+						}
+					}
+				}
+			}
+		}
 	}
 }
+
+ 	
